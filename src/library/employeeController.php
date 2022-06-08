@@ -1,26 +1,37 @@
-<?php
+<?php 
+require('./employeeManager.php');
 
-include_once('./employeeManager.php');
+$req = $_SERVER['REQUEST_METHOD'];
 
-$id = $_GET['id'];
+    $db = getQueryStringParameters(); 
+    echo json_encode($db);
 
+switch ($req) {
+    case $req == 'DELETE': 
+        $inputdata = file_get_contents("php://input");
+        $data = json_decode($inputdata);
+    
+        deleteEmployee($data);
+        break;
+    case $req == 'POST': 
 
-var_dump($_POST);
+        $inputdata = file_get_contents("php://input");
+        $data = json_decode($inputdata, true);
 
-function getUserId($id){
-    if (isset($id) && !$_POST['id']) {
-        header("Location: .././employee.php?id=$id");
-    }
+        var_dump($data);
+
+        if(isset($data['id'])){
+            addEmployee($data);
+            break;
+        }
+
+        if($_POST['id'] != ''){
+            updateEmployee($_POST);
+            header('location: .././dashboard.php');
+        }
+
+    case $req == 'GET':
+        if(isset($_GET['id'])){
+            header('Location: .././employee.php?id='.$_GET['id'].'');
+        }
 }
-
-getUserId($id);
-
-function setEmployee($id){
-    if($_POST['id'] && isset($id)){
-        $employeeInfo = $_POST;
-        unset($employeeInfo['update']);
-        updateEmployee($employeeInfo);
-    }
-}
-
-setEmployee($id);

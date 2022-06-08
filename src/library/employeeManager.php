@@ -9,53 +9,72 @@
 
 function addEmployee(array $newEmployee)
 {
-    // TODO implement it
+    $newEmployee['id'] = hexdec(uniqid());
+
+
+    $db = getQueryStringParameters();
+    array_push($db, $newEmployee);
+    $db = json_encode($db);
+    file_put_contents('../.././resources/employees.json', $db);
 }
 
 
-function deleteEmployee(string $id)
+
+function deleteEmployee($id)
 {
-    // TODO implement it
+    $db = getQueryStringParameters();
+    $modifiedDb = array();
+    foreach ($db as $key => $value) {
+        if ($value['id'] === $id) {
+            unset($db[$key]);
+        }
+    }
+    $modifiedDb = array_values($db);
+    $modifiedDb = json_encode($modifiedDb, JSON_PRETTY_PRINT);
+    file_put_contents('../.././resources/employees.json', $modifiedDb);
+    return $modifiedDb;
 }
+
 
 
 function updateEmployee(array $updateEmployeeId)
 {
     // TODO implement it
-    $jsonData = file_get_contents('../../resources/employees.json');  //Aquí al movernos de directorio tenemos que tener cuidado
-    $data = json_decode($jsonData, true);
+    $db = getQueryStringParameters();
 
-    foreach ($data as $key => $employee) {
-        if (intval($updateEmployeeId['id']) === $employee['id']) {
-            $employee['name'] = $updateEmployeeId['name'];
-            $employee['lastName'] = $updateEmployeeId['lastName'];
-            $employee['gender'] = $updateEmployeeId['gender'];
-            $employee['streetAddress'] = $updateEmployeeId['streetAddress'];
-            $employee['age'] = $updateEmployeeId['age'];
-            $employee['email'] = $updateEmployeeId['email'];
-            $employee['city'] = $updateEmployeeId['city'];
-            $employee['state'] = $updateEmployeeId['state'];
-            $employee['postalCode'] = $updateEmployeeId['postalCode'];
-            $employee['phoneNumber'] = $updateEmployeeId['phoneNumber'];
+    foreach ($db as $key => $value) {
+
+        if ($value['id'] === intval($updateEmployeeId['id'])) {
+            
+            $db[$key]['name'] = $updateEmployeeId['name'];
+            $db[$key]['lastName'] = $updateEmployeeId['lastName'];
+            $db[$key]['email'] = $updateEmployeeId['email'];
+            $db[$key]['gender'] = $updateEmployeeId['gender'];
+            $db[$key]['city'] = $updateEmployeeId['city'];
+            $db[$key]['streetAddress'] = $updateEmployeeId['streetAddress'];
+
+            $db[$key]['state'] = $updateEmployeeId['state'];
+            $db[$key]['age'] = intval($updateEmployeeId['age']);
+            $db[$key]['postalCode'] = $updateEmployeeId['postalCode'];
+            $db[$key]['phoneNumber'] = $updateEmployeeId['phoneNumber'];
         }
     }
-    
-    $newJsonString = json_encode($data);
-    file_put_contents('../../resources/employees.json', $newJsonString);
 
-    header('location: ../.././index.php');
+    file_put_contents('../.././resources/employees.json', json_encode($db, JSON_PRETTY_PRINT));
+    return $db;
 }
+
 
 function getEmployee(string $id)
 {
     // TODO implement it
-
-    $jsonData = file_get_contents('../resources/employees.json');
-    $data = json_decode($jsonData, true);
-
-    foreach ($data as $key => $employee) {
-        if ($employee['id'] == $id) {
-            return $employee;
+    $json = file_get_contents('.././resources/employees.json');
+    $data = json_decode($json, true);
+    
+    foreach($data as $key => $value){
+        
+        if(intval($id) === $value['id']){
+            return $value;
         }
     }
 }
@@ -67,10 +86,12 @@ function getEmployee(string $id)
 // }
 
 
-// function getQueryStringParameters(): array
-// {
-// // TODO implement it
-// }
+function getQueryStringParameters(): array
+{
+    $json = file_get_contents('../.././resources/employees.json');
+    $data = json_decode($json, true);
+    return $data;
+}
 
 // function getNextIdentifier(array $employeesCollection): int
 // {

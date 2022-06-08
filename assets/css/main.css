@@ -1,0 +1,139 @@
+@import url(./normalize.css);
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400&display=swap');
+
+:root {
+  --primary: #143F6B;
+  --secondary: #F55353;
+  --terciary: #FEB139;
+  --cuaternary: #F6F54D;
+}
+
+
+.toggle {
+  display: none;
+}
+
+
+.fade-out {
+  -webkit-animation: fade-out 1s ease-out 1.5s both;
+  animation: fade-out 1s ease-out 1.5s both;
+}
+
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.main__container {
+  height: 100vh;
+  font-family: 'Mulish', sans-serif;
+}
+
+.employee_table {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.thead__table{
+  width: 100%;
+  color: var(--primary);
+  height: 4rem;
+}
+
+.trow__tableHead{
+  width: 100%;
+}
+
+.thead__col{
+  width: 12%;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.addEmp__button{
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  padding-bottom: 0.35rem;
+  font-weight: bold;
+  background-color: transparent;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 10rem;
+  cursor: pointer;
+}
+
+.delete__Button{
+  background-color: transparent;
+  color: var(--secondary);
+  border: none;
+  cursor: pointer;
+}
+
+.edit__button{
+  color: var(--primary);
+  text-decoration: none;
+  margin-right: 1.2rem;
+}
+
+.createEmp__button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.delete__Button{
+  background-image: url('../img/3669361_delete_ic_icon.png');
+  height: 24px;
+  width: 24px;
+  background-color: transparent;
+  color: var(--secondary);
+  border: none;
+  cursor: pointer;
+}
+
+.fa-check{
+  color: green;
+  font-size: 2rem;
+  transition: all 300ms;
+}
+
+
+.fa-check:hover{
+  color: rgb(1, 202, 1);
+  font-size: 2rem;
+}
+
+input{
+  padding-left: 0.3rem;
+  /* text-transform: capitalize; */
+  outline: none;
+  border: 1px solid black;
+}
+
+
+
+.fa-pen-to-square {
+    width: 24px;
+    height: 24px;
+}
