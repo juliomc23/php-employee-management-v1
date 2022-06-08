@@ -1,4 +1,4 @@
-`#php` `#basics` `#master-in-software-engineering`
+`#php` `#CRUD` `#master-in-software-engineering`
 
 # PHP Employee manager application
 
@@ -18,6 +18,16 @@ After cloning make sure you copy all the files into htdocs in your local machine
 Run your localhost with the cloned folder.
 
 
+### Log in
+
+In order to log in, use the following fake details:
+
+```
+Email: admin@assemblerschool.com
+Password: 123456
+```
+
+
 ## Technologies and Libraries 
 
 * PHP
@@ -26,43 +36,26 @@ Run your localhost with the cloned folder.
 * CSS
 * [Sweet Alert 2](https://sweetalert2.github.io/)
 
-### Ordered
 
-1. Item 1
-1. Item 2
-1. Item 3
-  1. Item 3a
-  1. Item 3b
+## Demo
 
-## Images
+![demo](https://user-images.githubusercontent.com/67965039/172650485-fc9c2150-f7c2-463c-9f37-c67bc905ed5e.gif)
+![demo](https://user-images.githubusercontent.com/67965039/172650532-70f82347-73de-4aa5-a13d-c859dea4bc93.gif)
+![demo](https://user-images.githubusercontent.com/67965039/172650498-c7511504-8fbb-46c1-a93f-642de4955097.gif)
 
-![This is a alt text.](/image/sample.png "This is a sample image.")
+## Authors
 
-## Links
+[Sefi Cohen](https://github.com/seficohen1)
 
-You may be using [Markdown Live Preview](https://markdownlivepreview.com/).
+[Julio Macias](https://github.com/juliomc23)
 
-## Blockquotes
 
-> Markdown is a lightweight markup language with plain-text-formatting syntax, created in 2004 by John Gruber with Aaron Swartz.
->
->> Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.
+## License
 
-## Tables
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-| Left columns  | Right columns |
-| ------------- |:-------------:|
-| left foo      | right foo     |
-| left bar      | right bar     |
-| left baz      | right baz     |
+## Acknowledgments
 
-## Blocks of code
-
-```
-let message = 'Hello world';
-alert(message);
-```
-
-## Inline code
-
-This web site is using `markedjs/marked`.
+<a href="https://gitmoji.dev">
+  <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
+</a>
